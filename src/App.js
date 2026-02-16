@@ -40,19 +40,19 @@ export default function App() {
     <>
       <div style={{ padding: '5px 5px', margin: '5px' }}>
         <h1>Random Color Generator</h1>
-        <p>
-          Please enter a hue and luminosity or click the 'generate' button to
-          randomly change the color of the box below and display a hexcode
-        </p>
+        <div>
+          Please enter a hue and luminosity or click randomly to change the
+          color of the box below and display a hexcode
+        </div>
       </div>
-      <p style={{ marginLeft: '12px' }}>Enter a hue here:</p>
+      <div style={{ marginLeft: '12px' }}>Enter a hue here:</div>
       <Input
         value={hue}
         onChange={(event) => {
           setHue(event.currentTarget.value);
         }}
       />
-      <p style={{ marginLeft: '12px' }}> Enter a luminosity here: </p>
+      <div style={{ marginLeft: '12px' }}> Enter a luminosity here: </div>
       <Input
         value={lum}
         onChange={(event) => {
