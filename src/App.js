@@ -6,7 +6,7 @@ import styled from 'styled-components';
 const Button = styled.button`
   font-size: 15px;
   padding: 5px 5px;
-  margin: 10px 10px 20px;
+  margin: 20px 10px 20px;
   width: 220px;
   display: block;
 `;
@@ -14,8 +14,9 @@ const Button = styled.button`
 const Input = styled.input`
   font-size: 15px;
   padding: 5px 10px;
-  margin: 10px;
+  margin: 10px 10px;
   width: 195px;
+  display: block;
 `;
 
 const Output = styled.div`
@@ -24,6 +25,7 @@ const Output = styled.div`
   margin: 10px;
   width: 200px;
   border-radius: 3px;
+  display: block;
 `;
 export default function App() {
   const color = randomcolor();
@@ -45,15 +47,21 @@ export default function App() {
       </div>
 
       <div>
-        <div style={{ marginLeft: '12px' }}>Enter a hue here.</div>
+        <label htmlFor="hueInput" style={{ marginLeft: '12px' }}>
+          Enter a hue here.
+        </label>
         <Input
+          id="hueInput"
           value={hue}
           onChange={(event) => {
             setHue(event.currentTarget.value);
           }}
         />
-        <div style={{ marginLeft: '12px' }}>Enter a luminosity here.</div>
+        <label htmlFor="lumInput" style={{ marginLeft: '12px' }}>
+          Enter a luminosity here.
+        </label>
         <Input
+          id="lumInput"
           value={lum}
           onChange={(event) => {
             setLum(event.currentTarget.value);
