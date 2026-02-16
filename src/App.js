@@ -1,71 +1,75 @@
 import './App.css';
 import randomcolor from 'randomcolor';
 import { useState } from 'react';
+import styled from 'styled-components';
 
+const Button = styled.button`
+  font-size: 15px;
+  padding: 5px 5px;
+  margin: 10px 10px 20px;
+  width: 220px;
+  display: block;
+`;
+
+const Input = styled.input`
+  font-size: 15px;
+  padding: 5px 10px;
+  margin: 10px;
+  width: 195px;
+`;
+
+const Output = styled.div`
+  font-size: 15px;
+  padding: 5px 10px;
+  margin: 10px;
+  width: 200px;
+  border-radius: 3px;
+`;
 export default function App() {
   const [myRandomColor, setMyRandomColor] = useState(randomcolor);
-  const [colorInput, setColorInput] = useState();
-  const generateFromInput = (text) => {
-    const [hue, luminosity] = text.split(' ');
-    return randomcolor({ hue, luminosity });
+  const [hue, setHue] = useState('');
+  const [lum, setLum] = useState('');
+  const generateFromInput = {
+    hue: hue,
+    luminosity: lum,
   };
   return (
     <div>
-      <div
-        style={{
-          padding: '5px 5px',
-          margin: '5px',
-        }}
-      >
+      <div style={{ padding: '5px 5px', margin: '5px' }}>
         <h1>Random Color Generator</h1>
         <p>
-          Please click the 'generate' button to randomly change the color of the
-          box below and display a hexcode or use the input field to choose a
-          specific hue and luminosity
+          Please enter a hue and luminosity or click the 'generate' button to
+          randomly change the color of the box below and display a hexcode
         </p>
       </div>
-      <button
-        style={{
-          fontSize: '15px',
-          padding: '5px 10px',
-          margin: '10px',
-          width: '220px',
-        }}
-        onClick={() => {
-          const newColor = randomcolor();
-          setMyRandomColor(newColor);
-        }}
-      >
-        Generate
-      </button>
+
       <div>
-        <input
-          style={{
-            fontSize: '15px',
-            padding: '5px 10px',
-            margin: '10px',
-            width: '195px',
-          }}
-          value={colorInput}
+        <div style={{ marginLeft: '12px' }}>Enter a hue here.</div>
+        <Input
+          value={hue}
           onChange={(event) => {
-            const val = event.currentTarget.value;
-            setColorInput(val);
-            setMyRandomColor(generateFromInput(val));
+            setHue(event.currentTarget.value);
           }}
         />
+        <div style={{ marginLeft: '12px' }}>Enter a luminosity here.</div>
+        <Input
+          value={lum}
+          onChange={(event) => {
+            setLum(event.currentTarget.value);
+          }}
+        />
+        <Button
+          onClick={() => {
+            const newColor = randomcolor(generateFromInput);
+            setMyRandomColor(newColor);
+          }}
+        >
+          Generate
+        </Button>
       </div>
-      <div
-        style={{
-          fontSize: '15px',
-          backgroundColor: myRandomColor,
-          padding: '5px 10px',
-          margin: '10px',
-          width: '200px',
-          borderRadius: '3px',
-        }}
-      >
+      <Output style={{ backgroundColor: myRandomColor }}>
         Generated Color: {myRandomColor}
-      </div>
+      </Output>
     </div>
   );
 }
