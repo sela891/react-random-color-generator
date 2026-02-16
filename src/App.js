@@ -3,13 +3,13 @@ import randomcolor from 'randomcolor';
 import { useState } from 'react';
 import styled from 'styled-components';
 
-const Button = styled.button`
+/*const Button = styled.button`
   font-size: 15px;
   padding: 5px 5px;
   margin: 20px 10px 20px;
   width: 220px;
   display: block;
-`;
+`;*/
 
 const Input = styled.input`
   font-size: 15px;
@@ -41,8 +41,8 @@ export default function App() {
       <div style={{ padding: '5px 5px', margin: '5px' }}>
         <h1>Random Color Generator</h1>
         <div>
-          Please enter a hue and luminosity or click randomly to change the
-          color of the box below and display a hexcode
+          Please enter a hue and luminosity or click the generate button to
+          change the color of the box below and display a hexcode
         </div>
       </div>
       <div style={{ marginLeft: '12px' }}>Enter a hue here:</div>
@@ -59,14 +59,14 @@ export default function App() {
           setLum(event.currentTarget.value);
         }}
       />
-      <Button
+      <button
         onClick={() => {
           const newColor = randomcolor(generateFromInput);
           setMyRandomColor(newColor);
         }}
       >
         Generate
-      </Button>
+      </button>
 
       <Output style={{ backgroundColor: myRandomColor }}>
         Generated Color: {myRandomColor}
