@@ -5,16 +5,16 @@ import styled from 'styled-components';
 
 const Button = styled.button`
   font-size: 15px;
-  padding: 5px 5px;
-  margin: 20px 10px 20px;
+  padding: 5px 0;
+  margin: 20px 0;
   width: 220px;
   display: block;
 `;
 
 const Input = styled.input`
   font-size: 15px;
-  padding: 5px 10px;
-  margin: 10px 10px;
+  padding: 5px 0;
+  margin: 10px 0;
   width: 195px;
   display: block;
 `;
@@ -42,23 +42,25 @@ export default function App() {
       style={{
         width: '100vw',
         height: '100vh',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'column',
       }}
     >
-      <div style={{ padding: '5px 5px', margin: '5px' }}>
-        <h1>Random Color Generator</h1>
-        <div>
-          Please enter a hue and luminosity or click the generate button to
-          change the color of the box below and display a hexcode
-        </div>
+      <h1>Random Color Generator</h1>
+      <div>
+        Please enter a hue and luminosity or click the generate button to change
+        the color of the box below and display a hexcode
       </div>
-      <div style={{ marginLeft: '12px' }}>Enter a hue here:</div>
+      <div style={{ marginTop: '12px' }}>Enter a hue here:</div>
       <Input
         value={hue}
         onChange={(event) => {
           setHue(event.currentTarget.value);
         }}
       />
-      <div style={{ marginLeft: '12px' }}> Enter a luminosity here: </div>
+      <div style={{ marginTop: '12px' }}> Enter a luminosity here: </div>
       <Input
         value={lum}
         onChange={(event) => {
