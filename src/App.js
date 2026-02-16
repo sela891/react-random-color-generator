@@ -37,7 +37,13 @@ export default function App() {
     luminosity: lum,
   };
   return (
-    <div className="App">
+    <div
+      className="container"
+      style={{
+        width: '100vw',
+        height: '100vh',
+      }}
+    >
       <div style={{ padding: '5px 5px', margin: '5px' }}>
         <h1>Random Color Generator</h1>
         <div>
