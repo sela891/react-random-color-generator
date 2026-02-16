@@ -37,7 +37,7 @@ export default function App() {
     luminosity: lum,
   };
   return (
-    <div>
+    <>
       <div style={{ padding: '5px 5px', margin: '5px' }}>
         <h1>Random Color Generator</h1>
         <p>
@@ -45,40 +45,32 @@ export default function App() {
           randomly change the color of the box below and display a hexcode
         </p>
       </div>
+      <p style={{ marginLeft: '12px' }}>Enter a hue here:</p>
+      <Input
+        value={hue}
+        onChange={(event) => {
+          setHue(event.currentTarget.value);
+        }}
+      />
+      <p style={{ marginLeft: '12px' }}> Enter a luminosity here: </p>
+      <Input
+        value={lum}
+        onChange={(event) => {
+          setLum(event.currentTarget.value);
+        }}
+      />
+      <Button
+        onClick={() => {
+          const newColor = randomcolor(generateFromInput);
+          setMyRandomColor(newColor);
+        }}
+      >
+        Generate
+      </Button>
 
-      <div>
-        <label htmlFor="hueInput" style={{ marginLeft: '12px' }}>
-          Enter a hue here.
-        </label>
-        <Input
-          id="hueInput"
-          value={hue}
-          onChange={(event) => {
-            setHue(event.currentTarget.value);
-          }}
-        />
-        <label htmlFor="lumInput" style={{ marginLeft: '12px' }}>
-          Enter a luminosity here.
-        </label>
-        <Input
-          id="lumInput"
-          value={lum}
-          onChange={(event) => {
-            setLum(event.currentTarget.value);
-          }}
-        />
-        <Button
-          onClick={() => {
-            const newColor = randomcolor(generateFromInput);
-            setMyRandomColor(newColor);
-          }}
-        >
-          Generate
-        </Button>
-      </div>
       <Output style={{ backgroundColor: myRandomColor }}>
         Generated Color: {myRandomColor}
       </Output>
-    </div>
+    </>
   );
 }
