@@ -26,7 +26,8 @@ const Output = styled.div`
   border-radius: 3px;
 `;
 export default function App() {
-  const [myRandomColor, setMyRandomColor] = useState(randomcolor);
+  const color = randomcolor();
+  const [myRandomColor, setMyRandomColor] = useState(color);
   const [hue, setHue] = useState('');
   const [lum, setLum] = useState('');
   const generateFromInput = {
